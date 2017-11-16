@@ -24,7 +24,7 @@ public class ArtistaClontroller extends HttpServlet {
     
     private static final long serialVersionUID = 1L;
     private static String INSERT_OR_EDIT = "/Artista.jsp";
-    private static String LIST_USER = "/Artistalista.jsp";
+    private static String LIST_USER = "/ArtistaLista.jsp";
     private ArtistaDao dao;
     
     public ArtistaClontroller() throws URISyntaxException {
