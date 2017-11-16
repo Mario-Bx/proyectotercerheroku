@@ -15,7 +15,7 @@
     </head>
     <body>
         <div class="form-style-5">
-                    <a href="ArtistaClontroller?action=incertarAc"><input type="submit" value="Add Artista"/></a>
+                    <a href="ArtistaController?action=incertarAc"><input type="submit" value="Add Artista"/></a>
                     <table border=1>
                         <thead>
                             <tr>
@@ -33,8 +33,8 @@
                             <tr>
                                 <td><%=artista.getId()%></td>
                                 <td><%=artista.getNombre()%></td>
-                                <td><a href="ArtistaClontroller?action=edit&ClienteID=<%=artista.getId() %>">Aatualizar</a></td>
-                                <td><a href="ArtistaClontroller?action=delete&ClienteID=<%=artista.getId() %>">Eliminar</a></td>
+                                <td><a href="ArtistaController?action=edit&ClienteID=<%=artista.getId() %>">Aatualizar</a></td>
+                                <td><a href="ArtistaController?action=delete&ClienteID=<%=artista.getId() %>">Eliminar</a></td>
                             </tr>
 
                             <%

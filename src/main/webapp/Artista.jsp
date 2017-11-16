@@ -28,7 +28,7 @@
                     } else if ((request.getParameter("action").equals("edit"))) {
                         ArtistasCL Squemas = (ArtistasCL) request.getAttribute("Cliente");
                     %>
-                    <form method="POST" action='ArtistaClontroller' name="frmAddSquema">
+                    <form method="POST" action='ArtistaController' name="frmAddSquema">
                         Cliente ID : <input type="text" readonly="readonly" name="clienteIdHtml" value="<%=Squemas.getId()%>"/>
                         <br /> 
                         Nombre Cliente : <input type="text" name="NombreHtml" value="<%=Squemas.getNombre()%>"/>
