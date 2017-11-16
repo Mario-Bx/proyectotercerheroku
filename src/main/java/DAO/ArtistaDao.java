@@ -6,7 +6,8 @@
 package DAO;
 
 import Dato.ArtistasCL;
-import Servicios.DbUtil;
+import Servicios.*;
+import java.net.URISyntaxException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -23,8 +24,8 @@ public class ArtistaDao {
 
     private Connection connection;
 
-    public ArtistaDao() {
-        connection = DbUtil.getConnection();
+    public ArtistaDao() throws URISyntaxException {
+        connection = Conexion.getConnection();
     }
 
     public void addArtista(ArtistasCL newclArturoJc) {
