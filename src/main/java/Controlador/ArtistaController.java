@@ -51,7 +51,7 @@ public class ArtistaController extends HttpServlet {
 //            request.setAttribute("Cliente", newCliente);
         } else if (action.equalsIgnoreCase("ListarArtistasAC")) {
             forward = LIST_USER;
-            request.setAttribute("ArtistasBD", dao.getAllArtistas());
+            request.setAttribute("ArtistasJSP", dao.getAllArtistas());
         } else {
             forward = INSERT_OR_EDIT;
         }
@@ -74,7 +74,7 @@ public class ArtistaController extends HttpServlet {
 //            dao.updateCliente(newCliente, clienteId);
         }
         RequestDispatcher view = request.getRequestDispatcher(LIST_USER);
-        request.setAttribute("ArtistasBD", dao.getAllArtistas());
+        request.setAttribute("ArtistasJSP", dao.getAllArtistas());
         view.forward(request, response);
     }    
 

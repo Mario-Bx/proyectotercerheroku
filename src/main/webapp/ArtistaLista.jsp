@@ -26,7 +26,7 @@
                         </thead>
                         <tbody>
                             <%
-                                List<ArtistasCL> newArtista = (List<ArtistasCL>) request.getAttribute("ArtistasBD");
+                                List<ArtistasCL> newArtista = (List<ArtistasCL>) request.getAttribute("ArtistasJSP");
                                 if (newArtista != null) {
                                     for (ArtistasCL artista : newArtista) {
                             %>
