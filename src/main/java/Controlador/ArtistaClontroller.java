@@ -5,8 +5,12 @@
  */
 package Controlador;
 
+import DAO.ArtistaDao;
+import Dato.ArtistasCL;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.net.URISyntaxException;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -17,70 +21,61 @@ import javax.servlet.http.HttpServletResponse;
  * @author LabingXEON
  */
 public class ArtistaClontroller extends HttpServlet {
+    
+    private static final long serialVersionUID = 1L;
+    private static String INSERT_OR_EDIT = "/Cliente.jsp";
+    private static String LIST_USER = "/ClienteLista.jsp";
+    private ArtistaDao dao;
+    
+    public ArtistaClontroller() throws URISyntaxException {
+        super();
+        dao = new ArtistaDao();
+    }
+    
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String forward = "";
+        String action = request.getParameter("action");
 
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet ArtistaClontroller</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet ArtistaClontroller at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+        if (action.equalsIgnoreCase("delete")) {
+            System.out.println("Entro a la accion eliminar");
+            int clienteId = Integer.parseInt(request.getParameter("ClienteID"));
+//            dao.deleteCliente(clienteId);
+            forward = LIST_USER;
+            ///primero va la tabla de sql
+            request.setAttribute("ClienteBD", dao.getAllArtistas());
+            System.out.println(" Realizo la accion de eliminar");
+        } else if (action.equalsIgnoreCase("edit")) {
+            forward = INSERT_OR_EDIT;
+            int clienteID = Integer.parseInt(request.getParameter("ClienteID"));
+//            ClienteJc newCliente = dao.getClienteById(clienteID);
+//            request.setAttribute("Cliente", newCliente);
+        } else if (action.equalsIgnoreCase("ListarArtistasAC")) {
+            forward = LIST_USER;
+            request.setAttribute("ArtistasBD", dao.getAllArtistas());
+        } else {
+            forward = INSERT_OR_EDIT;
         }
-    }
 
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-    /**
-     * Handles the HTTP <code>GET</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-    @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        processRequest(request, response);
+        RequestDispatcher view = request.getRequestDispatcher(forward);
+        view.forward(request, response);
     }
+    
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        ArtistasCL newCliente = new ArtistasCL();
+        newCliente.setNombre(request.getParameter("nombreHtml"));
 
-    /**
-     * Handles the HTTP <code>POST</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        processRequest(request, response);
-    }
+        String clienteid = request.getParameter("clienteIdHtml");
 
-    /**
-     * Returns a short description of the servlet.
-     *
-     * @return a String containing servlet description
-     */
-    @Override
-    public String getServletInfo() {
-        return "Short description";
-    }// </editor-fold>
+        if (clienteid == null || clienteid.isEmpty()) {
+            dao.addArtista(newCliente);
+        } else {
+            newCliente.setId(Integer.parseInt(clienteid));
+            int clienteId = Integer.parseInt(request.getParameter("clienteIdHtml"));
+//            dao.updateCliente(newCliente, clienteId);
+        }
+        RequestDispatcher view = request.getRequestDispatcher(LIST_USER);
+        request.setAttribute("ArtistasBD", dao.getAllArtistas());
+        view.forward(request, response);
+    }    
 
 }
