@@ -31,10 +31,8 @@
                         </nav>
                     </header>                
                 </div>
-            </div>
-        </div>
-        
-        <div class="form-style-5">
+                
+                <div class="form-style-5">
                     <%
                         ArtistasCL newSquema = (ArtistasCL) request.getAttribute("frmAddSquema");
                         if (request.getParameter("action").equals("incertarAc")) {
@@ -60,5 +58,9 @@
                         }
                     %>
                 </div>
+            </div>
+        </div>
+        
+        
     </body>
 </html>
