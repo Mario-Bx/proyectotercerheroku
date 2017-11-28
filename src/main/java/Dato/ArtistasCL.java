@@ -10,6 +10,7 @@ package Dato;
  * @author LabingXEON
  */
 public class ArtistasCL {
+
     int id;
     String nombre;
 
@@ -31,5 +32,5 @@ public class ArtistasCL {
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
-    
+
 }

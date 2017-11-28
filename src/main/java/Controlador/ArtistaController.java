@@ -21,17 +21,17 @@ import javax.servlet.http.HttpServletResponse;
  * @author LabingXEON
  */
 public class ArtistaController extends HttpServlet {
-    
+
     private static final long serialVersionUID = 1L;
     private static String INSERT_OR_EDIT = "/Artista.jsp";
     private static String LIST_USER = "/ArtistaLista.jsp";
     private ArtistaDao dao;
-    
+
     public ArtistaController() throws URISyntaxException {
         super();
         dao = new ArtistaDao();
     }
-    
+
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String forward = "";
         String action = request.getParameter("action");
@@ -59,7 +59,7 @@ public class ArtistaController extends HttpServlet {
         RequestDispatcher view = request.getRequestDispatcher(forward);
         view.forward(request, response);
     }
-    
+
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         ArtistasCL newCliente = new ArtistasCL();
         newCliente.setNombre(request.getParameter("nombreHtml"));
@@ -76,6 +76,6 @@ public class ArtistaController extends HttpServlet {
         RequestDispatcher view = request.getRequestDispatcher(LIST_USER);
         request.setAttribute("ArtistasJSP", dao.getAllArtistas());
         view.forward(request, response);
-    }    
+    }
 
 }

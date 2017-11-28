@@ -31,7 +31,7 @@
                         </nav>
                     </header>                
                 </div>
-                
+
                 <div class="form-style-5">
                     <%
                         ArtistasCL newSquema = (ArtistasCL) request.getAttribute("frmAddSquema");
@@ -60,7 +60,7 @@
                 </div>
             </div>
         </div>
-        
-        
+
+
     </body>
 </html>

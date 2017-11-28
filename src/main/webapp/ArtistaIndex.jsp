@@ -12,6 +12,6 @@
         <title>Inicio Artista</title>
     </head>
     <body>
-         <jsp:forward page="ArtistaController?action=ListarArtistasAC" />
+        <jsp:forward page="ArtistaController?action=ListarArtistasAC" />
     </body>
 </html>
