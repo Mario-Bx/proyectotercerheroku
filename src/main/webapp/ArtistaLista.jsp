@@ -12,6 +12,9 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
+        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum.scale=1.0">
+        <link rel="stylesheet" href="ui/Css/MenuDesplegableSub.css">
+        <link rel="stylesheet" href="ui/Css/Etilo Fomulario.css">
     </head>
     <body>
         <div id="Centrar">
